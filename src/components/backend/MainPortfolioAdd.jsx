@@ -38,8 +38,8 @@ const MainPortfolioAdd = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(true); // Affiche le loader dès le clic
       if (params.id) {
+        setLoading(true); // Affiche le loader dès le clic
         try {
           const request = await getApiPortfolioById(params.id);
           if (!request) return;
