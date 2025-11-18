@@ -268,7 +268,6 @@ canvas {
 .main__portfolio {
   min-height: 500px;
   padding: var(--spacing-xxl) 0;
-  scroll-margin-top: 58px;
 }
 
 .main__title__skills,
@@ -308,7 +307,8 @@ canvas {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  opacity: 0;
+  opacity: 0;                
+  transform: translateX(-300px) rotate(-360deg);
 }
 
 .card__link {
@@ -479,10 +479,6 @@ canvas {
   padding-bottom: var(--spacing-xl) !important;
 }
 
-.roll_in_left {
-  animation: roll-in-left 0.6s ease-out both;
-}
-
 .splide__arrow svg {
   fill: #000 !important;
 }
@@ -560,38 +556,6 @@ canvas {
  * See http://animista.net/license for more info. 
  * w: http://animista.net, t: @cssanimista
  * ---------------------------------------------- */
-
-/**
- * ----------------------------------------
- * animation roll-in-left
- * ----------------------------------------
- */
-
-@keyframes roll-in-left {
-  0% {
-    -webkit-transform: translateX(-800px) rotate(-540deg);
-    transform: translateX(-800px) rotate(-540deg);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-    transform: translateX(0) rotate(0deg);
-    opacity: 1;
-  }
-}
-
-@keyframes roll-in-right {
-  0% {
-    -webkit-transform: translateX(800px) rotate(540deg);
-    transform: translateX(800px) rotate(540deg);
-    opacity: 0;
-  }
-  100% {
-    -webkit-transform: translateX(0) rotate(0deg);
-    transform: translateX(0) rotate(0deg);
-    opacity: 1;
-  }
-}
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1278px) {
@@ -705,10 +669,6 @@ canvas {
 
   .link__freelance {
     border-bottom: 2px solid #09c4ce;
-  }
-
-  .main__portfolio {
-    scroll-margin-top: 80px;
   }
 
   .picture-404 {

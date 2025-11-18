@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 import { getApiPortfolio } from "../../utils/api";
 import Slider from "./Slider";
 import "@splidejs/react-splide/css";
@@ -8,43 +8,60 @@ import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import stylesFrontEnd from "../../css/frontend/style.module.css";
 
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
 export default function () {
-  // const BASE_URL = process.env.BASE_URL.replaceAll('/";', "").replace('"', "");
-  const BASE_URL_AWS = process.env.REACT_BASE_URL_AWS.replaceAll(
-    '/";',
+  const BASE_URL_AWS = (
+    import.meta.env.VITE_BASE_URL_AWS ||
+    process.env.REACT_BASE_URL_AWS ||
     ""
-  ).replace('"', "");
+  ).replace(/['";]/g, "");
 
   const [data, setData] = useState([]);
+  const cardsRef = useRef([]);
 
+  /** 🔹 Récupération API */
   useEffect(() => {
-    const data = async () => {
+    const fetchData = async () => {
       const request = await getApiPortfolio();
       if (!request) return alert("data error");
       setData(request.data);
     };
 
-    data();
+    fetchData();
   }, []);
 
-  const ref = useRef();
-  const [rollInLeft, setRollInLeft] = useState(false);
-  ref.current = rollInLeft;
-
+  /** 🔹 Animation GSAP */
   useEffect(() => {
-    const rollInLeftChange = () => {
-      const show = document.body.scrollHeight >= 500;
+    if (data.length === 0) return;
 
-      if (ref.current !== show) {
-        setRollInLeft(true);
-      }
-    };
+    cardsRef.current.forEach((card, index) => {
+      gsap.fromTo(
+        card,
+        {
+          opacity: 0,
+          x: -100,
+        },
+        {
+          opacity: 1,
+          x: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 75%",
+            end: "top 20%",
+            scrub: true, // animation suit le scroll
+            markers: false,
+          },
+        }
+      );
+    });
+  }, [data]);
 
-    window.addEventListener("scroll", rollInLeftChange);
-
-    return () => window.removeEventListener("scroll", rollInLeftChange);
-  }, []);
-
+  /** 🔹 Typewriter */
   const [text] = useTypewriter({
     words: [
       "Je suis passionné par la programmation et le développement web",
@@ -55,7 +72,6 @@ export default function () {
     typeSpeed: 80,
     deleteSpeed: 50,
     delaySpeed: 500,
-    // onLoopDone: handleDone,
   });
 
   return (
@@ -63,17 +79,17 @@ export default function () {
       <section className={stylesFrontEnd.main__about}>
         <h2 className={stylesFrontEnd.title__about}>{text}</h2>
       </section>
+
       <Slider />
+
       <section className={stylesFrontEnd.main__portfolio} id="portfolio">
         <h3 className={stylesFrontEnd.main__title__portfolio}>Portfolio</h3>
+
         <div className={stylesFrontEnd.cards__portfolio}>
-          {data.map((element) => (
+          {data.map((element, index) => (
             <div
-              className={
-                stylesFrontEnd.card +
-                " " +
-                (rollInLeft ? stylesFrontEnd.roll_in_left : "")
-              }
+              className={stylesFrontEnd.card}
+              ref={(el) => (cardsRef.current[index] = el)}
               key={element.id}
             >
               <a
@@ -91,6 +107,7 @@ export default function () {
                   className={stylesFrontEnd.card__picture}
                 />
               </a>
+
               <div className={stylesFrontEnd.card__content}>
                 <h4 className={stylesFrontEnd.card__title}>{element.title}</h4>
                 <p className={stylesFrontEnd.card__description}>
@@ -101,11 +118,13 @@ export default function () {
           ))}
         </div>
       </section>
+
       <section className={stylesFrontEnd.main__contact}>
         <p className={stylesFrontEnd.contact__infos}>
           Pour me contacter, cliquez sur un des liens
           <i className="em em-point_down"></i>
         </p>
+
         <h2 className={stylesFrontEnd.main__title__contact}>
           Disponible pour des&nbsp;
           <a
