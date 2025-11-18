@@ -1,0 +1,26 @@
+@import url(../css/frontend/reset.css);
+
+/* CSS PAGE 404 */
+.main__page__404 {
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 9.5rem;
+}
+
+.title__404 {
+  font-size: 10rem;
+  color: #ff6060;
+}
+
+.subtitle__404 {
+  color: #ff6060;
+  font-size: 24px;
+  text-align: center;
+}
+
+.link__404 {
+  color: #000000;
+}
