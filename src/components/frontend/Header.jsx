@@ -28,7 +28,7 @@ export default function Header() {
   };
 
   const [text] = useTypewriter({
-    words: ["développeur Web", "formateur digital"],
+    words: ["développeur Web Full Stack", "formateur digital"],
     loop: 0,
     onLoopDone: handleDone,
   });
