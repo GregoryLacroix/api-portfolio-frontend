@@ -673,7 +673,7 @@ canvas {
   }
 
   .title__about {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
   }
 
   .main__title__contact {
