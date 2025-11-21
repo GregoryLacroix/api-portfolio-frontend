@@ -137,13 +137,7 @@ export default function () {
               <div className={stylesFrontEnd.card__content}>
                 <h4 className={stylesFrontEnd.card__title}>{element.title}</h4>
                 <p className={stylesFrontEnd.card__description}>
-
-                  <i
-                    className={
-                      element.skills + " " + stylesFrontEnd.icones__skills
-                    }
-                    title={element.name}
-                  ></i>
+                  {element.skills}
                 </p>
               </div>
             </div>
