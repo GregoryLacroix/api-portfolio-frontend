@@ -64,9 +64,11 @@ export default function () {
   /** 🔹 Typewriter */
   const [text] = useTypewriter({
     words: [
-      "Je suis passionné par la programmation et le développement web",
-      "J'aime le design, l'UX et le code de qualité",
-      "Aujourd'hui, je travaille principalement avec React, Symfony et NodeJs",
+      "Je code des mondes invisibles où chaque ligne raconte une histoire et chaque clic crée une expérience",
+      "Je transforme des idées en interfaces vivantes, où le web devient terrain d’expression et d’imagination",
+      "Je sculpte l’invisible, pixel par pixel, pour donner vie à des expériences qui se ressentent autant qu’elles se voient",
+      "Entre pixels et logique, je tisse des routes numériques où chaque interaction a du sens",
+      "J’écris le web comme on écrit des poèmes, en cherchant l’harmonie entre beauté et fonctionnalité",
     ],
     loop: 0,
     typeSpeed: 80,
@@ -135,7 +137,13 @@ export default function () {
               <div className={stylesFrontEnd.card__content}>
                 <h4 className={stylesFrontEnd.card__title}>{element.title}</h4>
                 <p className={stylesFrontEnd.card__description}>
-                  {element.skills}
+
+                  <i
+                    className={
+                      element.skills + " " + stylesFrontEnd.icones__skills
+                    }
+                    title={element.name}
+                  ></i>
                 </p>
               </div>
             </div>
