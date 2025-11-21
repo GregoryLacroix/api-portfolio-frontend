@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: https://gregorylacroix.go.yn.fr/sitemap.xml
+Sitemap: https://www.gregory-lacroix-pf.com/sitemap.xml
