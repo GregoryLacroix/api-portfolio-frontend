@@ -63,7 +63,7 @@ export default function () {
 
   /** 🔹 Typewriter */
   const [text] = useTypewriter({
-    words: [
+    words: [  
       "Je code des mondes que seul le web révèle.",
       "Je transforme des idées en lumière numérique.",
       "Je sculpte l’invisible, une ligne de code à la fois.",
@@ -160,7 +160,7 @@ export default function () {
         <h2 className={stylesFrontEnd.main__title__contact}>
           Disponible pour des&nbsp;
           <a
-            href="mailTo:gregorylacroix78@gmail.com"
+            href="mailto:gregorylacroix78@gmail.com?subject=Proposition%20de%20mission"
             className={stylesFrontEnd.link__hire}
             target="_blank"
             title="mailto"
@@ -169,7 +169,7 @@ export default function () {
           </a>
           &nbsp;ou pour tout projet&nbsp;
           <a
-            href="mailTo:gregorylacroix78@gmail.com"
+            href="mailto:gregorylacroix78@gmail.com?subject=Proposition%20de%20projet%20freelance"
             className={stylesFrontEnd.link__freelance}
             target="_blank"
             title="mailto"
