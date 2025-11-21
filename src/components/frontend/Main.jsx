@@ -64,11 +64,11 @@ export default function () {
   /** 🔹 Typewriter */
   const [text] = useTypewriter({
     words: [
-      "Je code des mondes que seul le web révèle",
-      "Je transforme des idées en lumière numérique",
-      "Je sculpte l’invisible, une ligne de code à la fois",
-      "Entre pixels et logique, je fais naître des expériences",
-      "J’écris le web comme d’autres écrivent des poèmes",
+      "Je code des mondes que seul le web révèle.",
+      "Je transforme des idées en lumière numérique.",
+      "Je sculpte l’invisible, une ligne de code à la fois.",
+      "Entre pixels et logique, je fais naître des expériences.",
+      "J’écris le web comme d’autres écrivent des poèmes.",
     ],
     loop: 0,
     typeSpeed: 80,
