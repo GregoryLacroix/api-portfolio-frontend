@@ -80,18 +80,28 @@ export default function () {
         <h2 className={stylesFrontEnd.title__about}>{text}</h2>
       </section>
       <section className={stylesFrontEnd.main__about}>
-        <h3 className={stylesFrontEnd.undertitle__about}>
-          Développeur web depuis neuf ans, j’explore le web comme un terrain de
-          jeu où React, Symfony et Node.js sont mes outils de prédilection.
-          J’aime transformer une idée en interface vivante, donner du rythme à
-          des données, et faire dialoguer le front et le back sans fausse note.
-          Depuis six ans, je suis aussi formateur digital : j’accompagne tout
-          public — curieux, débutants, reconvertis ou passionnés — à apprivoiser
-          le numérique. J’aime démystifier la technique, traduire le complexe en
-          clair et révéler le potentiel de chacun. Entre création, pédagogie et
-          veille constante, j’évolue dans un web qui bouge vite… et c’est
-          exactement ce qui me motive.
-        </h3>
+        <div className={stylesFrontEnd.main__about__content}>
+          <p className={stylesFrontEnd.undertitle__about}>
+            Développeur web depuis neuf ans, j’explore le web comme un terrain
+            de jeu où React, Symfony et Node.js sont mes outils de prédilection.
+          </p>
+          <p className={stylesFrontEnd.undertitle__about}>
+            J’aime transformer une idée en interface vivante, donner du rythme à
+            des données, et faire dialoguer le front et le back sans fausse
+            note.
+          </p>
+          <p className={stylesFrontEnd.undertitle__about}>
+            Depuis six ans, je suis aussi formateur digital : j’accompagne tout
+            public — curieux, débutants, reconvertis ou passionnés — à
+            apprivoiser le numérique. J’aime démystifier la technique, traduire
+            le complexe en clair et révéler le potentiel de chacun.
+          </p>
+          <p className={stylesFrontEnd.undertitle__about}>
+            {" "}
+            Entre création, pédagogie et veille constante, j’évolue dans un web
+            qui bouge vite… et c’est exactement ce qui me motive.
+          </p>
+        </div>
       </section>
 
       <Slider />
