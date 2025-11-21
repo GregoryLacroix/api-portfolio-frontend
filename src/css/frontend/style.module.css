@@ -104,7 +104,7 @@ canvas {
 .header__slogan {
   color: var(--text-primary-color);
   font-size: var(--font-size-xxl);
-  letter-spacing: 0.10rem;
+  letter-spacing: 0.1rem;
   animation: text-focus-in 3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 
@@ -246,7 +246,8 @@ canvas {
   background-color: #fff;
   position: relative;
   z-index: 1000;
-  padding: var(--spacing-md) var(--spacing-sm) var(--spacing-md) var(--spacing-sm);
+  padding: var(--spacing-md) var(--spacing-sm) var(--spacing-md)
+    var(--spacing-sm);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -263,7 +264,7 @@ canvas {
   line-height: 1.5rem;
 }
 
-.main__about__content{
+.main__about__content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -449,6 +450,10 @@ canvas {
 .footer__link {
   text-decoration: none;
   color: #000;
+}
+
+.footer__link__cv {
+  font-weight: var(--font-weight-md);
 }
 
 .footer__copyrigth {
