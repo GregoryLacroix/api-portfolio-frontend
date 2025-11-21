@@ -116,13 +116,13 @@ const scrollToPortfolio = (e) => {
 
                 <li className={stylesFrontEnd.nav__item}>
                   <a href="#" className={stylesFrontEnd.nav__link} onClick={scrollToCompetences}>
-                    Compétences
+                    Technologies
                   </a>
                 </li>
 
                 <li className={stylesFrontEnd.nav__item}>
                   <a href="#" className={stylesFrontEnd.nav__link} onClick={scrollToPortfolio}>
-                    Portfolio
+                    Projets
                   </a>
                 </li>
 

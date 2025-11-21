@@ -97,7 +97,7 @@ export default function () {
       <Slider />
 
       <section className={stylesFrontEnd.main__portfolio} id="portfolio">
-        <h3 className={stylesFrontEnd.main__title__portfolio}>Portfolio</h3>
+        <h3 className={stylesFrontEnd.main__title__portfolio}>Projets</h3>
 
         <div className={stylesFrontEnd.cards__portfolio}>
           {data.map((element, index) => (
