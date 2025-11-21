@@ -104,7 +104,7 @@ canvas {
 .header__slogan {
   color: var(--text-primary-color);
   font-size: var(--font-size-xxl);
-  letter-spacing: 0.15rem;
+  letter-spacing: 0.10rem;
   animation: text-focus-in 3s cubic-bezier(0.55, 0.085, 0.68, 0.53) both;
 }
 
