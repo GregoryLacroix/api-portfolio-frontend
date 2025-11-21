@@ -155,7 +155,7 @@ const scrollToPortfolio = (e) => {
           />
           <h1 className={stylesFrontEnd.header__title}>Grégory Lacroix</h1>
           <h2 className={stylesFrontEnd.header__slogan}>
-            Bonjour ! Je suis {text}
+            👋 Bonjour ! Je suis {text}
           </h2>
         </div>
       </section>
