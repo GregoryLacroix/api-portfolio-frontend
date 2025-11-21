@@ -1,7 +1,6 @@
-import React from "react";
-import { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useTypewriter, Cursor } from "react-simple-typewriter";
+import { useTypewriter } from "react-simple-typewriter";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 import {
   faArrowDown,
@@ -10,13 +9,13 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import stylesFrontEnd from "../../css/frontend/style.module.css";
 
-export default function () {
-  const BASE_URL_AWS = process.env.REACT_BASE_URL_AWS.replaceAll(
-    '/";',
-    ""
-  ).replace('"', "");
+export default function Header() {
+  const BASE_URL_AWS = (process.env.REACT_BASE_URL_AWS || "")
+    .replaceAll('/";', "")
+    .replace(/"/g, "");
 
   const isAuth = useIsAuthenticated();
+
   const [toggleNav, setToggleNav] = useState(false);
   const ref = useRef(null);
 
@@ -24,12 +23,8 @@ export default function () {
   const [dot, setDot] = useState(false);
 
   const handleDone = () => {
-    setTimeout(() => {
-      setBar(false);
-    }, 2000);
-    setTimeout(() => {
-      setDot(".");
-    }, 2500);
+    setTimeout(() => setBar(false), 2000);
+    setTimeout(() => setDot("."), 2500);
   };
 
   const [text] = useTypewriter({
@@ -38,6 +33,7 @@ export default function () {
     onLoopDone: handleDone,
   });
 
+  // Ferme le menu burger si clic à l’extérieur
   useEffect(() => {
     const closeOpenMenus = (e) => {
       if (toggleNav && ref.current && !ref.current.contains(e.target)) {
@@ -46,49 +42,52 @@ export default function () {
     };
     document.addEventListener("mousedown", closeOpenMenus);
 
-    return () => {
-      document.removeEventListener("mousedown", closeOpenMenus);
-    };
-  }, [ref, toggleNav, setToggleNav]);
+    return () => document.removeEventListener("mousedown", closeOpenMenus);
+  }, [toggleNav]);
 
-  function handleScrollBottom(e) {
+  const scrollToCompetences = (e) => {
     e.preventDefault();
-    window.scroll({
+
+    const element = document.getElementById("competences");
+    if (!element) return;
+
+    const headerHeight =
+      window.innerWidth <= 468 ? 82 : 59; // hauteur du header responsive
+
+    const y = element.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
+
+  const handleScrollBottom = (e) => {
+    e.preventDefault();
+    window.scrollTo({
       top: document.body.scrollHeight,
-      left: 0,
       behavior: "smooth",
     });
-  }
+  };
 
-  function handleScrollTop(e) {
+  const handleScrollTop = (e) => {
     e.preventDefault();
-    window.scroll({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
-  function scrollToView(e) {
-    e.preventDefault();
-    const element = document.getElementById("portfolio");
-    element.scrollIntoView({
-      block: "start",
-      behavior: "smooth",
-    });
-  }
+  // ⭐️⭐️⭐️ CORRECTION ICI : scroll avec offset pour éviter que le titre soit caché
+const scrollToPortfolio = (e) => {
+  e.preventDefault();
 
-  function handleScroll(e) {
-    e.preventDefault();
-    let margin = 57;
-    if (window.innerWidth <= 468) margin = 20;
-    const i = window.innerHeight - margin;
-    window.scroll({
-      top: i,
-      left: 0,
-      behavior: "smooth",
-    });
-  }
+  const element = document.getElementById("portfolio");
+  if (!element) return;
+
+  const headerHeight =
+    window.innerWidth <= 468 ? 82 : 58; // hauteur du header responsive
+
+  const y = element.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+  window.scrollTo({ top: y, behavior: "smooth" });
+};
+
+
 
   return (
     <>
@@ -99,55 +98,41 @@ export default function () {
               icon={faBars}
               ref={ref}
               className={stylesFrontEnd.icone__burger}
-              onClick={(e) => {
-                e.preventDefault();
-                setToggleNav(!toggleNav);
-              }}
+              onClick={() => setToggleNav(!toggleNav)}
             />
+
             <div
               className={
                 stylesFrontEnd.nav__content +
-                (toggleNav ? " " + stylesFrontEnd.toggle_nav : "")
+                (toggleNav ? ` ${stylesFrontEnd.toggle_nav}` : "")
               }
             >
               <div className={stylesFrontEnd.nav__dropdown}>
                 <li className={stylesFrontEnd.nav__item}>
-                  <a
-                    href=""
-                    className={stylesFrontEnd.nav__link}
-                    onClick={handleScrollTop}
-                  >
+                  <a href="#" className={stylesFrontEnd.nav__link} onClick={handleScrollTop}>
                     <FontAwesomeIcon icon={faHouseChimney} />
                   </a>
                 </li>
+
                 <li className={stylesFrontEnd.nav__item}>
-                  <a
-                    href=""
-                    className={stylesFrontEnd.nav__link}
-                    onClick={handleScroll}
-                  >
+                  <a href="#" className={stylesFrontEnd.nav__link} onClick={scrollToCompetences}>
                     Compétences
                   </a>
                 </li>
+
                 <li className={stylesFrontEnd.nav__item}>
-                  <a
-                    href=""
-                    className={stylesFrontEnd.nav__link}
-                    onClick={scrollToView}
-                  >
+                  <a href="#" className={stylesFrontEnd.nav__link} onClick={scrollToPortfolio}>
                     Portfolio
                   </a>
                 </li>
+
                 <li className={stylesFrontEnd.nav__item}>
-                  <a
-                    href=""
-                    className={stylesFrontEnd.nav__link}
-                    onClick={handleScrollBottom}
-                  >
+                  <a href="#" className={stylesFrontEnd.nav__link} onClick={handleScrollBottom}>
                     Contact
                   </a>
                 </li>
-                {isAuth ? (
+
+                {isAuth && (
                   <li className={stylesFrontEnd.nav__item}>
                     <a
                       href="/admin/portfolios"
@@ -156,18 +141,17 @@ export default function () {
                       BackOffice
                     </a>
                   </li>
-                ) : (
-                  ""
                 )}
               </div>
             </div>
           </ul>
         </nav>
+
         <div className={stylesFrontEnd.header__section}>
           <img
-            src={BASE_URL_AWS + "avatar/avatar3.png"}
+            src={`${BASE_URL_AWS}avatar/avatar3.png`}
             className={stylesFrontEnd.avatar}
-            alt="logo"
+            alt="avatar"
           />
           <h1 className={stylesFrontEnd.header__title}>Grégory Lacroix</h1>
           <h2 className={stylesFrontEnd.header__slogan}>
@@ -175,10 +159,11 @@ export default function () {
           </h2>
         </div>
       </section>
+
       <FontAwesomeIcon
         icon={faArrowDown}
         className={stylesFrontEnd.arrow__down}
-        onClick={handleScroll}
+        onClick={scrollToCompetences}
       />
     </>
   );

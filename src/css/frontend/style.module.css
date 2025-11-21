@@ -242,11 +242,11 @@ canvas {
 }
 
 .main__about {
-  height: 70px;
+  min-height: 70px;
   background-color: #fff;
   position: relative;
   z-index: 1000;
-  padding: var(--spacing-md) 0 var(--spacing-md) 0;
+  padding: var(--spacing-md) var(--spacing-sm) var(--spacing-md) var(--spacing-sm);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -255,6 +255,12 @@ canvas {
 .title__about {
   text-align: center;
   font-size: var(--font-size-xxl);
+}
+
+.undertitle__about {
+  padding: 0 var(--spacing-md);
+  text-align: center;
+  line-height: 1.5rem;
 }
 
 .main__skills {
@@ -307,7 +313,7 @@ canvas {
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
-  opacity: 0;                
+  opacity: 0;
   transform: translateX(-300px) rotate(-360deg);
 }
 
@@ -372,12 +378,12 @@ canvas {
 
 .skills__item {
   display: flex;
-  flex-direction: column;  /* place l'image au-dessus du texte */
-  align-items: center;     /* centre horizontalement */
+  flex-direction: column; /* place l'image au-dessus du texte */
+  align-items: center; /* centre horizontalement */
   justify-content: center; /* centre verticalement */
-  text-align: center;      /* aligne le texte au centre */
+  text-align: center; /* aligne le texte au centre */
   padding: 15px;
-  height: 100%;            /* utile pour un centrage parfait */
+  height: 100%; /* utile pour un centrage parfait */
   box-sizing: border-box;
 }
 
@@ -500,6 +506,10 @@ canvas {
   ::-webkit-scrollbar {
     display: none; /* Chrome, Safari, and Opera */
   }
+}
+
+#portfolio {
+  scroll-margin-top: 80px;
 }
 
 /* .skill-item {
@@ -691,6 +701,12 @@ canvas {
   }
 
   .main__about {
-    height: 90px;
+    min-height: 90px;
+  }
+}
+
+@media (max-width: 480px) {
+  #portfolio {
+    scroll-margin-top: 0px;
   }
 }
