@@ -7,6 +7,7 @@ import "@splidejs/react-splide/css/skyblue";
 import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import stylesFrontEnd from "../../css/frontend/style.module.css";
+import LoaderPortfolio from "./LoaderPortfolio";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -21,14 +22,22 @@ export default function () {
   ).replace(/['";]/g, "");
 
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
   const cardsRef = useRef([]);
 
   /** 🔹 Récupération API */
   useEffect(() => {
     const fetchData = async () => {
-      const request = await getApiPortfolio();
-      if (!request) return alert("data error");
-      setData(request.data);
+      setLoading(true);
+      try {
+        const request = await getApiPortfolio();
+        if (!request) return alert("data error");
+        setData(request.data);
+      } catch (err) {
+        console.error("Erreur lors de la récupération des portfolios :", err);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();
@@ -105,48 +114,52 @@ export default function () {
           </p>
         </div>
       </section>
-
+      
       <Slider />
 
       <section className={stylesFrontEnd.main__portfolio} id="portfolio">
         <h3 className={stylesFrontEnd.main__title__portfolio}>Projets</h3>
 
-        <div className={stylesFrontEnd.cards__portfolio}>
-          {data
-            .filter((element) => element.isActive) // <-- filtre les actifs
-            .map((element, index) => (
-              <div
-                className={stylesFrontEnd.card}
-                ref={(el) => (cardsRef.current[index] = el)}
-                key={element.id}
-              >
-                <a
-                  href={element.url}
-                  className={
-                    element.bgColor
-                      ? stylesFrontEnd.card__link + " " + element.bgColor
-                      : stylesFrontEnd.card__link
-                  }
-                  target="_blank"
+        {loading ? (
+          <LoaderPortfolio /> // <-- loader centré dans l'encadré noir
+        ) : (
+          <div className={stylesFrontEnd.cards__portfolio}>
+            {data
+              .filter((element) => element.isActive)
+              .map((element, index) => (
+                <div
+                  className={stylesFrontEnd.card}
+                  ref={(el) => (cardsRef.current[index] = el)}
+                  key={element.id}
                 >
-                  <img
-                    src={BASE_URL_AWS + "logos/" + element.image}
-                    alt={element.title}
-                    className={stylesFrontEnd.card__picture}
-                  />
-                </a>
+                  <a
+                    href={element.url}
+                    className={
+                      element.bgColor
+                        ? stylesFrontEnd.card__link + " " + element.bgColor
+                        : stylesFrontEnd.card__link
+                    }
+                    target="_blank"
+                  >
+                    <img
+                      src={BASE_URL_AWS + "logos/" + element.image}
+                      alt={element.title}
+                      className={stylesFrontEnd.card__picture}
+                    />
+                  </a>
 
-                <div className={stylesFrontEnd.card__content}>
-                  <h4 className={stylesFrontEnd.card__title}>
-                    {element.title}
-                  </h4>
-                  <p className={stylesFrontEnd.card__description}>
-                    {element.skills}
-                  </p>
+                  <div className={stylesFrontEnd.card__content}>
+                    <h4 className={stylesFrontEnd.card__title}>
+                      {element.title}
+                    </h4>
+                    <p className={stylesFrontEnd.card__description}>
+                      {element.skills}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))}
-        </div>
+              ))}
+          </div>
+        )}
       </section>
 
       <section className={stylesFrontEnd.main__contact}>

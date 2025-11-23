@@ -116,7 +116,7 @@ const scrollToPortfolio = (e) => {
 
                 <li className={stylesFrontEnd.nav__item}>
                   <a href="#" className={stylesFrontEnd.nav__link} onClick={scrollToCompetences}>
-                    Technologies
+                    À propos
                   </a>
                 </li>
 

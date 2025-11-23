@@ -258,6 +258,12 @@ canvas {
   font-size: var(--font-size-xxl);
 }
 
+.title__about__skills {
+  text-align: center;
+  font-size: var(--font-size-xxl);
+  margin-bottom: var(--spacing-lg);
+}
+
 .undertitle__about {
   padding: 0 var(--spacing-md);
   text-align: center;
@@ -523,6 +529,31 @@ canvas {
 
 #portfolio {
   scroll-margin-top: 80px;
+}
+
+/* Loader centré dans la section portfolios */
+.loaderWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 500px; /* ajuster selon la taille de la section */
+  background-color: #000; /* fond noir de ton encadré */
+  z-index: 100000;
+  position: relative;
+}
+
+.loader {
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #00d1b2; /* couleur Bulma primaire */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* .skill-item {

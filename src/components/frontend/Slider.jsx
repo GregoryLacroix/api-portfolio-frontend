@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getApiSkills } from "../../utils/api";
 import stylesFrontEnd from "../../css/frontend/style.module.css";
-
-// 🌀 Import Swiper + module autoplay
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -19,11 +17,12 @@ export default function SkillsSlider() {
     fetchData();
   }, []);
 
-  // ✅ Détermine si on peut activer le loop
+  // Détermine si on peut activer le loop
   const shouldLoop = dataSkills.length >= 6; // ou selon slidesPerView max
 
   return (
     <section className={stylesFrontEnd.main__skills}>
+      <h2 className={stylesFrontEnd.title__about__skills}>Outils & technologies</h2>
       <Swiper
         modules={[Autoplay]}
         slidesPerView={6}

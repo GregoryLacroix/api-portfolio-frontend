@@ -33,26 +33,29 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Grégory LACROIX",
-        "image": "https://gregory-lacroix-pf.com/assets/images/favicon/gandalf-cartoon.png",
-        "@id": "",
-        "url": "https://gregory-lacroix-pf.com/",
-        "telephone": "0664633587",
+        "@type": "ProfessionalService",
+        "name": "Gregory Lacroix",
+        "url": "https://www.gregory-lacroix-pf.com/",
+        "logo": "https://www.gregory-lacroix-pf.com/assets/images/favicon/gandalf-cartoon.png",
+        "image": "https://www.gregory-lacroix-pf.com/assets/images/favicon/gandalf-cartoon.png",
+        "description": "Gregory Lacroix, freelance à Dreux, crée des sites web professionnels et boutiques en ligne sur mesure, responsives et optimisés SEO local pour booster votre visibilité et attirer de nouveaux clients.",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "38 Rue de la Fée",
-          "addressLocality": "BOUTIGNY-PROUAIS",
-          "postalCode": "28410",
+          "streetAddress": "38 rue de la fée",
+          "addressLocality": "Dreux",
+          "postalCode": "28100",
           "addressCountry": "FR"
-        }
+        },
+        "telephone": "+33 6 64 63 35 87",
+        "sameAs": ["https://www.linkedin.com/in/gregory-lacroix/"]
       }
     </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Bonjour, je suis développeur Web, formateur digital, Je suis passionné par la programmation et le développement web. J'aime le design, l'UX et le code de qualité. Aujourd'hui, je travaille principalement avec React / Symfony"
+      content="Gregory Lacroix, freelance à Dreux, crée des sites web professionnels et boutiques en ligne sur mesure, responsives et optimisés SEO local pour booster votre visibilité et attirer de nouveaux clients."
     />
     <meta name="twitter:card" content="summary" />
     <meta property="og:url" content="https://gregory-lacroix-pf.com" />
@@ -60,7 +63,7 @@
     <meta property="og:title" content="Grégory LACROIX | Portfolio" />
     <meta
       property="og:description"
-      content="Bonjour, je suis développeur Web, formateur digital, Je suis passionné par la programmation et le développement web. J'aime le design, l'UX et le code de qualité. Aujourd'hui, je travaille principalement avec React / Symfony"
+      content="Gregory Lacroix, freelance à Dreux, crée des sites web professionnels et boutiques en ligne sur mesure, responsives et optimisés SEO local pour booster votre visibilité et attirer de nouveaux clients."
     />
     <meta
       property="og:image"
@@ -70,10 +73,19 @@
     <meta name="twitter:site" content="@gregorylacroix" />
     <meta name="twitter:creator" content="@GregoryLacroix" />
     <meta property="og:url" content="https://www.gregory-lacroix-pf.com/" />
-    <meta property="og:title" content="Portfolio | Grégory LACROIX - Développeur Web Freelance Symfony React" />
-    <meta property="og:description" content="Bonjour, je suis développeur Web, formateur digital, Je suis passionné par la programmation et le développement web. J'aime le design, l'UX et le code de qualité. Aujourd'hui, je travaille principalement avec React / Symfony" />
-    <meta property="og:image"
-      content="https://www.gregory-lacroix-pf.com/assets/images/favicon/gandalf-cartoon.png" />
+    <meta
+      property="og:title"
+      content="Portfolio | Grégory LACROIX - Développeur Web Freelance Symfony React"
+    />
+    <meta
+      property="og:description"
+      content="Gregory Lacroix, freelance à Dreux, crée des sites web professionnels et boutiques en ligne sur mesure, responsives et optimisés SEO local pour booster votre visibilité et attirer de nouveaux clients."
+    />
+    <meta
+      property="og:image"
+      content="https://www.gregory-lacroix-pf.com/assets/images/favicon/gandalf-cartoon.png"
+    />
+    <link rel="canonical" href="https://www.gregory-lacroix-pf.com/" />
     <link
       rel="icon"
       type="image/x-icon"
@@ -98,9 +110,35 @@
       rel="stylesheet"
       type="text/css"
     />
-    <title>Portfolio | Grégory LACROIX - Développeur Web Freelance Symfony React</title>
+    <title>
+      Gregory Lacroix – Freelance web à Dreux | Sites vitrines & e-commerce
+    </title>
+    <style>
+      .itemscope{
+        height: 0;
+        overflow: hidden;
+      }
+    </style>
   </head>
   <body>
+    <div class="itemscope" itemscope itemtype="https://schema.org/ProfessionalService">
+      <span itemprop="name">Gregory Lacroix</span><br />
+      <div
+        itemprop="address"
+        itemscope
+        itemtype="https://schema.org/PostalAddress"
+      >
+        <span itemprop="streetAddress">38 rue de la fée</span>,
+        <span itemprop="addressLocality">Dreux</span>,
+        <span itemprop="postalCode">28100</span>,
+        <span itemprop="addressCountry">FR</span>
+      </div>
+      <span itemprop="telephone">+33 6 64 63 35 87</span><br />
+      <a itemprop="sameAs" href="https://www.linkedin.com/in/gregory-lacroix/"
+        >LinkedIn</a
+      >
+    </div>
+
     <div id="app"></div>
     <script type="module" src="/src/index.jsx"></script>
   </body>
