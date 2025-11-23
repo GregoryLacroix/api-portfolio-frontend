@@ -63,7 +63,7 @@ export default function () {
 
   /** 🔹 Typewriter */
   const [text] = useTypewriter({
-    words: [  
+    words: [
       "Je code des mondes que seul le web révèle.",
       "Je transforme des idées en lumière numérique.",
       "Je sculpte l’invisible, une ligne de code à la fois.",
@@ -112,36 +112,40 @@ export default function () {
         <h3 className={stylesFrontEnd.main__title__portfolio}>Projets</h3>
 
         <div className={stylesFrontEnd.cards__portfolio}>
-          {data.map((element, index) => (
-            <div
-              className={stylesFrontEnd.card}
-              ref={(el) => (cardsRef.current[index] = el)}
-              key={element.id}
-            >
-              <a
-                href={element.url}
-                className={
-                  element.bgColor
-                    ? stylesFrontEnd.card__link + " " + element.bgColor
-                    : stylesFrontEnd.card__link
-                }
-                target="_blank"
+          {data
+            .filter((element) => element.isActive) // <-- filtre les actifs
+            .map((element, index) => (
+              <div
+                className={stylesFrontEnd.card}
+                ref={(el) => (cardsRef.current[index] = el)}
+                key={element.id}
               >
-                <img
-                  src={BASE_URL_AWS + "logos/" + element.image}
-                  alt={element.title}
-                  className={stylesFrontEnd.card__picture}
-                />
-              </a>
+                <a
+                  href={element.url}
+                  className={
+                    element.bgColor
+                      ? stylesFrontEnd.card__link + " " + element.bgColor
+                      : stylesFrontEnd.card__link
+                  }
+                  target="_blank"
+                >
+                  <img
+                    src={BASE_URL_AWS + "logos/" + element.image}
+                    alt={element.title}
+                    className={stylesFrontEnd.card__picture}
+                  />
+                </a>
 
-              <div className={stylesFrontEnd.card__content}>
-                <h4 className={stylesFrontEnd.card__title}>{element.title}</h4>
-                <p className={stylesFrontEnd.card__description}>
-                  {element.skills}
-                </p>
+                <div className={stylesFrontEnd.card__content}>
+                  <h4 className={stylesFrontEnd.card__title}>
+                    {element.title}
+                  </h4>
+                  <p className={stylesFrontEnd.card__description}>
+                    {element.skills}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </section>
 

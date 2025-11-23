@@ -1,6 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { getApiPortfolio, ApiPortfolioDelete } from "../../utils/api";
+import {
+  getApiPortfolio,
+  ApiPortfolioDelete
+} from "../../utils/api";
+import BulmaSwitch from "./BulmaSwitch";
 import moment from "moment";
 import Pagination from "./Pagination";
 import Loader from "./Loader";
@@ -127,6 +131,7 @@ const MainPortfolio = () => {
                 <tr>
                   <th></th>
                   <th>Titre</th>
+                  <th>État</th>
                   <th>Technologies</th>
                   <th>Date</th>
                   <th></th>
@@ -144,6 +149,13 @@ const MainPortfolio = () => {
                     </td>
                     <td className="mainportfolio-td is-vcentered">
                       {element.title}
+                    </td>
+                    <td className="mainportfolio-td is-vcentered">
+                      <BulmaSwitch
+                        key={element.id}
+                        id={element.id}
+                        initialValue={element.isActive}
+                      />
                     </td>
                     <td className="mainportfolio-td is-vcentered">
                       {element.skills}

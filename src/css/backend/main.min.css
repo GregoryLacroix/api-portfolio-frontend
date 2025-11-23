@@ -1,3 +1,5 @@
+@import "../../../node_modules/bulma-switch-control/css/main.css";
+
 .pagination-previous,
 .pagination-next,
 .pagination-link,
