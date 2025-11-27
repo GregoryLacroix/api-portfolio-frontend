@@ -4,6 +4,7 @@ import { getApiSkills, ApiSkillDelete } from "../../utils/api";
 import moment from "moment";
 import Pagination from "./Pagination";
 import Loader from "./Loader";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 
 const Main = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -14,8 +15,11 @@ const Main = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const isAuth = useIsAuthenticated();
 
   useEffect(() => {
+    if (!isAuth) navigate("/admin/login");
+
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -75,8 +79,8 @@ const Main = () => {
           <div className="level-left">
             <div className="level-item">
               <ul>
-                <li>Admin</li>
-                <li>Skills</li>
+                <li>BackOffice</li>
+                <li>Technologies</li>
               </ul>
             </div>
           </div>
@@ -95,7 +99,7 @@ const Main = () => {
 
       <section className="hero is-hero-bar">
         <div className="hero-body">
-          <h1 className="title">Compétences</h1>
+          <h1 className="title">Outils & Technologies</h1>
         </div>
       </section>
 
@@ -113,7 +117,7 @@ const Main = () => {
               <span className="icon">
                 <span className="mdi mdi-wallet"></span>
               </span>
-              {data.length} Compétence{data.length > 1 ? "s" : ""}
+              {data.length} Technologie{data.length > 1 ? "s" : ""}
             </p>
           </header>
 

@@ -3,18 +3,22 @@ import { useNavigate, useParams } from "react-router-dom";
 import { ApiSkillAdd, ApiSkillUpdate, getApiSkillById } from "../../utils/api";
 import FormFieldError from "./FormFieldError";
 import Loader from "./Loader";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 
 const MainSkillAdd = () => {
   const [error, setError] = useState({});
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const isAuth = useIsAuthenticated();
   const params = useParams();
 
   const nameRef = useRef();
   const cssClassRef = useRef();
 
   useEffect(() => {
+    if (!isAuth) navigate("/admin/login");
+
     const fetchSkill = async () => {
       if (params.id) {
         const request = await getApiSkillById(params.id);
@@ -70,7 +74,7 @@ const MainSkillAdd = () => {
             <span className="icon">
               <i className="mdi mdi-ballot"></i>
             </span>
-            {params.id ? "Modifier" : "Ajouter"} compétence &nbsp;&nbsp;
+            {params.id ? "Modifier" : "Ajouter"} une technologie &nbsp;&nbsp;
             <a
               href="https://devicon.dev/"
               target="_blank"

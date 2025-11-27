@@ -1,13 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import {
-  getApiPortfolio,
-  ApiPortfolioDelete
-} from "../../utils/api";
+import { getApiPortfolio, ApiPortfolioDelete } from "../../utils/api";
 import BulmaSwitch from "./BulmaSwitch";
 import moment from "moment";
 import Pagination from "./Pagination";
 import Loader from "./Loader";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 
 const MainPortfolio = () => {
   const BASE_URL_AWS = (
@@ -24,8 +22,11 @@ const MainPortfolio = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const isAuth = useIsAuthenticated();
 
   useEffect(() => {
+    if (!isAuth) navigate("/admin/login");
+
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -84,8 +85,8 @@ const MainPortfolio = () => {
           <div className="level-left">
             <div className="level-item">
               <ul>
-                <li>Admin</li>
-                <li>Portfolios</li>
+                <li>BackOffice</li>
+                <li>Projets</li>
               </ul>
             </div>
           </div>
@@ -104,7 +105,7 @@ const MainPortfolio = () => {
 
       <section className="hero is-hero-bar">
         <div className="hero-body">
-          <h1 className="title">Portfolios</h1>
+          <h1 className="title">Projets</h1>
         </div>
       </section>
       <section className="section is-main-section">
@@ -121,7 +122,7 @@ const MainPortfolio = () => {
               <span className="icon">
                 <span className="mdi mdi-wallet"></span>
               </span>
-              {data.length} sites Web
+              {data.length} Projet{data.length > 1 ? "s" : ""}
             </p>
           </header>
 

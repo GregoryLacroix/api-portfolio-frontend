@@ -8,6 +8,7 @@ import {
 } from "../../utils/api";
 import FormFieldError from "./FormFieldError";
 import Loader from "./Loader";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 
 const MainPortfolioAdd = () => {
   const BASE_URL_AWS = (
@@ -29,6 +30,7 @@ const MainPortfolioAdd = () => {
   const labelPicture = useRef();
 
   const navigate = useNavigate();
+  const isAuth = useIsAuthenticated();
   const params = useParams();
 
   const titleRef = useRef();
@@ -37,6 +39,8 @@ const MainPortfolioAdd = () => {
   const bgColor = useRef();
 
   useEffect(() => {
+    if (!isAuth) navigate("/admin/login");
+
     const fetchData = async () => {
       if (params.id) {
         setLoading(true); // Affiche le loader dès le clic
@@ -136,7 +140,7 @@ const MainPortfolioAdd = () => {
             <span className="icon">
               <i className="mdi mdi-ballot"></i>
             </span>
-            {params.id ? "Modifier" : "Ajouter"} site Web
+            {params.id ? "Modifier" : "Ajouter"} un projet
           </p>
         </header>
 

@@ -11,7 +11,7 @@ const SideBar = () => {
       <div className="aside-tools">
         <div className="aside-tools-label">
           <span>
-            <b>Admin</b> Portfolio
+            <b>BackOffice</b> Portfolio
           </span>
         </div>
       </div>
@@ -34,7 +34,7 @@ const SideBar = () => {
               >
                 <span className="mdi mdi-library"></span>
               </span>
-              <span className="menu-item-label">Portfolio</span>
+              <span className="menu-item-label">Projets</span>
             </NavLink>
           </li>
           <li>
@@ -51,7 +51,7 @@ const SideBar = () => {
               >
                 <span className="mdi mdi-wrench"></span>
               </span>
-              <span className="menu-item-label">Compétences</span>
+              <span className="menu-item-label">Outils & Technologies</span>
             </NavLink>
           </li>
           <li>

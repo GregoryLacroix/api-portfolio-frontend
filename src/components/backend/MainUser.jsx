@@ -4,6 +4,7 @@ import { getApiUsers, ApiUserDelete } from "../../utils/api";
 import moment from "moment";
 import Pagination from "./Pagination";
 import Loader from "./Loader";
+import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 
 const Main = () => {
   const BASE_URL_AWS = process.env.REACT_BASE_URL_AWS?.replace(/"/g, "") || "";
@@ -16,9 +17,12 @@ const Main = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const isAuth = useIsAuthenticated();
 
   // Fetch users once
   useEffect(() => {
+    if (!isAuth) navigate("/admin/login");
+
     const fetchData = async () => {
       setLoading(true);
       try {
@@ -28,6 +32,7 @@ const Main = () => {
         const message = localStorage.getItem("message");
         if (message) setNotification(message);
       } catch (err) {
+        console.log(error)
         setError(err.message || "Erreur lors de la requête");
       } finally {
         setLoading(false);
@@ -59,7 +64,7 @@ const Main = () => {
 
   if (loading) return <Loader />; // Affiche le loader animé
 
-  if (error) return <div>Erreur: {error}</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <>
@@ -68,7 +73,7 @@ const Main = () => {
           <div className="level-left">
             <div className="level-item">
               <ul>
-                <li>Admin</li>
+                <li>BackOffice</li>
                 <li>Utilisateurs</li>
               </ul>
             </div>
