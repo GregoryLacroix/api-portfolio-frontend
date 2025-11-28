@@ -17,6 +17,7 @@ const SignIn = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const divErrorRef = useRef();
 
   useEffect(() => {
@@ -33,6 +34,7 @@ const SignIn = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       const { data } = await axios.post(`${BASE_URL}api/login`, {
@@ -57,6 +59,8 @@ const SignIn = () => {
       const message = error.response?.data?.message || "Erreur de connexion";
       divErrorRef.current.classList.add("msg__error");
       divErrorRef.current.innerText = message;
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -69,6 +73,7 @@ const SignIn = () => {
           type="email"
           id="username"
           value={email}
+          disabled={loading}
           onChange={(e) => setEmail(e.target.value)}
           className="input mb-2"
           autoComplete="email"
@@ -80,13 +85,20 @@ const SignIn = () => {
           type="password"
           id="password"
           value={password}
+          disabled={loading}
           onChange={(e) => setPassword(e.target.value)}
           className="input"
           autoComplete="current-password"
         />
 
         <div className="control">
-          <button type="submit" className="button is-primary mt-3">
+          <button
+            type="submit"
+            className={`button is-primary mt-3 ${
+              loading ? "is-loading" : ""
+            }`}
+            disabled={loading}
+          >
             <span>Valider</span>
           </button>
         </div>
