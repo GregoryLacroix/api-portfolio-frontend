@@ -145,7 +145,6 @@ const MainPortfolioAdd = () => {
         </header>
 
         <div className="card-content">
-          {loading && <Loader />}
           <form onSubmit={handleSubmit} encType="multipart/form-data">
             {/* Titre / Technologies */}
             <div className="field is-horizontal">
@@ -158,6 +157,7 @@ const MainPortfolioAdd = () => {
                     className="input"
                     name="title"
                     type="text"
+                    disabled={loading}
                     placeholder="Saisir un titre"
                     ref={titleRef}
                   />
@@ -168,6 +168,7 @@ const MainPortfolioAdd = () => {
                     className="input"
                     name="skills"
                     type="text"
+                    disabled={loading}
                     placeholder="Saisir les technologies"
                     ref={skills}
                   />
@@ -187,6 +188,7 @@ const MainPortfolioAdd = () => {
                     className="input"
                     name="url"
                     type="text"
+                    disabled={loading}
                     placeholder="Saisir l'URL du site Web"
                     ref={url}
                   />
@@ -206,6 +208,7 @@ const MainPortfolioAdd = () => {
                     className="input"
                     name="bgColor"
                     type="text"
+                    disabled={loading}
                     placeholder="Saisir les classes CSS optionnelles"
                     ref={bgColor}
                   />
@@ -225,6 +228,7 @@ const MainPortfolioAdd = () => {
                       className="file-input"
                       type="file"
                       name="image"
+                      disabled={loading}
                       onChange={handleFileChange}
                     />
                     <span className="file-cta">
@@ -259,11 +263,16 @@ const MainPortfolioAdd = () => {
               </div>
             </div>
 
-            {/* Submit */}
             <div className="field is-horizontal">
               <div className="field-label"></div>
               <div className="field-body">
-                <button type="submit" className="button is-primary">
+                <button
+                  type="submit"
+                  className={`button is-primary mt-3 ${
+                    loading ? "is-loading" : ""
+                  }`}
+                  disabled={loading}
+                >
                   Enregistrer {params.id ? "les modifications" : ""}
                 </button>
               </div>

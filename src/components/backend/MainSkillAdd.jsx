@@ -87,7 +87,6 @@ const MainSkillAdd = () => {
         </header>
 
         <div className="card-content">
-          {loading && <Loader />}
           <form onSubmit={handleSubmit}>
             <div className="field is-horizontal">
               <div className="field-label is-normal">
@@ -99,6 +98,7 @@ const MainSkillAdd = () => {
                     className="input"
                     name="name"
                     type="text"
+                    disabled={loading}
                     placeholder="Saisir le titre de la compétence"
                     ref={nameRef}
                   />
@@ -117,6 +117,7 @@ const MainSkillAdd = () => {
                     className="input"
                     name="cssClass"
                     type="text"
+                    disabled={loading}
                     placeholder="Saisir les classes CSS optionnelles"
                     ref={cssClassRef}
                   />
@@ -128,7 +129,13 @@ const MainSkillAdd = () => {
             <div className="field is-horizontal">
               <div className="field-label"></div>
               <div className="field-body">
-                <button type="submit" className="button is-primary">
+                <button
+                  type="submit"
+                  className={`button is-primary mt-3 ${
+                    loading ? "is-loading" : ""
+                  }`}
+                  disabled={loading}
+                >
                   Enregistrer {params.id ? "les modifications" : ""}
                 </button>
               </div>
