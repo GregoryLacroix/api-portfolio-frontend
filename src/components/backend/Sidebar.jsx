@@ -20,6 +20,28 @@ const SideBar = () => {
         <ul className="menu-list">
           <li>
             <NavLink
+              to="/admin/dashboard"
+              className={({ isActive }) =>
+                isActive ? "is-active has-icon" : "has-icon"
+              }
+            >
+              <span
+                className={
+                  pathname === "/admin/dashboard"
+                    ? "icon has-update-mark"
+                    : "icon"
+                }
+              >
+                <i className="mdi mdi-desktop-mac"></i>
+              </span>
+              <span className="menu-item-label">Dashboard</span>
+            </NavLink>
+          </li>
+        </ul>
+        <p className="menu-label">Menu</p>
+        <ul className="menu-list">
+          <li>
+            <NavLink
               to="/admin/portfolios"
               className={({ isActive }) =>
                 isActive ? "is-active has-icon" : "has-icon"

@@ -62,7 +62,7 @@ const MainPortfolio = () => {
 
   const handleDeleteItem = async (e, id) => {
     e.preventDefault();
-    const message = "Le site web a été supprimé.";
+    const message = "Le projet a été supprimé.";
     localStorage.setItem("message", message);
     setNotification(message);
     await ApiPortfolioDelete(id);

@@ -21,7 +21,7 @@ const SignIn = () => {
   const divErrorRef = useRef();
 
   useEffect(() => {
-    if (isAuth) navigate("/admin/portfolios");
+    if (isAuth) navigate("/admin/dashboard");
 
     const html = document.documentElement;
     html.classList.remove(

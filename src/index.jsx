@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/frontend/Home";
 import AdminHome from "./pages/backend/Home";
+import AdminDashboard from "./pages/backend/Dashboard";
 import AdminSkills from "./pages/backend/Skills";
 import AdminSkillAdd from "./pages/backend/SkillAdd";
 import AdminUsers from "./pages/backend/Users";
@@ -29,6 +30,12 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="admin/login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
+
+          <Route
+            exact
+            path="admin/dashboard"
+            element={<PrivateRoute Component={AdminDashboard} />}
+          />
 
           <Route
             exact
