@@ -103,11 +103,6 @@ const MainPortfolio = () => {
         </div>
       </section>
 
-      <section className="hero is-hero-bar">
-        <div className="hero-body">
-          <h1 className="title">Projets</h1>
-        </div>
-      </section>
       <section className="section is-main-section">
         {notification && (
           <div className="notification is-primary">
@@ -127,101 +122,107 @@ const MainPortfolio = () => {
           </header>
 
           <div className="card-content">
-            <table className="table is-fullwidth is-striped is-hoverable">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>Titre</th>
-                  <th>État</th>
-                  <th>Technologies</th>
-                  <th>Date</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentPosts.map((element, index) => (
-                  <tr key={element.id}>
-                    <td className="mainportfolio-td mainportfolio-td-img is-vcentered">
-                      <img
-                        src={`${BASE_URL_AWS}logos/${element.image}`}
-                        alt={element.title}
-                        className="portfolio__picture"
-                      />
-                    </td>
-                    <td className="mainportfolio-td is-vcentered">
-                      {element.title}
-                    </td>
-                    <td className="mainportfolio-td is-vcentered">
-                      <BulmaSwitch
-                        key={element.id}
-                        id={element.id}
-                        initialValue={element.isActive}
-                      />
-                    </td>
-                    <td className="mainportfolio-td is-vcentered">
-                      {element.skills}
-                    </td>
-                    <td className="mainportfolio-td is-vcentered">
-                      {moment(element.created).format("DD/MM/YYYY")}
-                    </td>
-                    <td className="is-actions-cell is-vcentered">
-                      <div className="buttons is-right">
-                        <Link
-                          to={`/admin/portfolio/update/${element.id}`}
-                          className="button is-small is-primary"
-                        >
-                          <span className="icon mdi mdi-pencil-outline"></span>
-                        </Link>
-                        <button
-                          className="button is-small is-danger"
-                          onClick={() => setOpenModalIndex(index)}
-                        >
-                          <span className="icon mdi mdi-trash-can"></span>
-                        </button>
-                      </div>
-
-                      {openModalIndex === index && (
-                        <div className="modal openModal">
-                          <div
-                            className="modal-background"
-                            onClick={() => setOpenModalIndex(null)}
-                          ></div>
-                          <div className="modal-card">
-                            <header className="modal-card-head">
-                              <p className="modal-card-title">
-                                Confirmer la suppression
-                              </p>
-                              <button
-                                className="delete"
-                                aria-label="close"
-                                onClick={() => setOpenModalIndex(null)}
-                              ></button>
-                            </header>
-                            <section className="modal-card-body">
-                              <p>Voulez-vous supprimer le portfolio ?</p>
-                            </section>
-                            <footer className="modal-card-foot">
-                              <button
-                                className="button"
-                                onClick={() => setOpenModalIndex(null)}
-                              >
-                                Annuler
-                              </button>
-                              <button
-                                className="button is-danger"
-                                onClick={(e) => handleDeleteItem(e, element.id)}
-                              >
-                                Valider
-                              </button>
-                            </footer>
+            <div className="b-table has-pagination">
+              <div className="table-wrapper has-mobile-cards">
+                <table className="table is-fullwidth is-striped is-hoverable">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>Titre</th>
+                      <th>État</th>
+                      <th>Technologies</th>
+                      <th>Date d’enregistrement</th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {currentPosts.map((element, index) => (
+                      <tr key={element.id}>
+                        <td className="mainportfolio-td mainportfolio-td-img is-vcentered">
+                          <img
+                            src={`${BASE_URL_AWS}logos/${element.image}`}
+                            alt={element.title}
+                            className="portfolio__picture"
+                          />
+                        </td>
+                        <td className="mainportfolio-td is-vcentered">
+                          {element.title}
+                        </td>
+                        <td className="mainportfolio-td is-vcentered">
+                          <BulmaSwitch
+                            key={element.id}
+                            id={element.id}
+                            initialValue={element.isActive}
+                          />
+                        </td>
+                        <td className="mainportfolio-td is-vcentered">
+                          {element.skills}
+                        </td>
+                        <td className="mainportfolio-td is-vcentered">
+                          {moment(element.created).format("DD/MM/YYYY")}
+                        </td>
+                        <td className="is-actions-cell is-vcentered">
+                          <div className="buttons is-right">
+                            <Link
+                              to={`/admin/portfolio/update/${element.id}`}
+                              className="button is-small is-primary"
+                            >
+                              <span className="icon mdi mdi-pencil-outline"></span>
+                            </Link>
+                            <button
+                              className="button is-small is-danger"
+                              onClick={() => setOpenModalIndex(index)}
+                            >
+                              <span className="icon mdi mdi-trash-can"></span>
+                            </button>
                           </div>
-                        </div>
-                      )}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+
+                          {openModalIndex === index && (
+                            <div className="modal openModal">
+                              <div
+                                className="modal-background"
+                                onClick={() => setOpenModalIndex(null)}
+                              ></div>
+                              <div className="modal-card">
+                                <header className="modal-card-head">
+                                  <p className="modal-card-title">
+                                    Confirmer la suppression
+                                  </p>
+                                  <button
+                                    className="delete"
+                                    aria-label="close"
+                                    onClick={() => setOpenModalIndex(null)}
+                                  ></button>
+                                </header>
+                                <section className="modal-card-body">
+                                  <p>Voulez-vous supprimer le portfolio ?</p>
+                                </section>
+                                <footer className="modal-card-foot">
+                                  <button
+                                    className="button"
+                                    onClick={() => setOpenModalIndex(null)}
+                                  >
+                                    Annuler
+                                  </button>
+                                  <button
+                                    className="button is-danger"
+                                    onClick={(e) =>
+                                      handleDeleteItem(e, element.id)
+                                    }
+                                  >
+                                    Valider
+                                  </button>
+                                </footer>
+                              </div>
+                            </div>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
 
             <Pagination
               postsPerPage={postsPerPage}

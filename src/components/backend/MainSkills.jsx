@@ -80,7 +80,7 @@ const Main = () => {
             <div className="level-item">
               <ul>
                 <li>BackOffice</li>
-                <li>Technologies</li>
+                <li>Outils & Technologies</li>
               </ul>
             </div>
           </div>
@@ -94,12 +94,6 @@ const Main = () => {
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="hero is-hero-bar">
-        <div className="hero-body">
-          <h1 className="title">Outils & Technologies</h1>
         </div>
       </section>
 

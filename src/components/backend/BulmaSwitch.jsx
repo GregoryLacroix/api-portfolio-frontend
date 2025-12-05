@@ -48,7 +48,6 @@ export default function BulmaSwitch({ id, initialValue }) {
     <label className={`switch ${isActive ? "is-active" : ""} is-rounded`}>
       <input type="checkbox" checked={isActive} onChange={handleChange} />
       <span className="check"></span>
-      <span className="control-label">{isActive ? "On" : "Off"}</span>
     </label>
   );
 }

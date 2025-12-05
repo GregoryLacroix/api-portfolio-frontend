@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ApiUserAdd, ApiAvatarUpload } from "../../utils/api";
 import FormFieldError from "./FormFieldError";
 import useIsAuthenticated from "react-auth-kit/hooks/useIsAuthenticated";
 
 const MainUserAdd = () => {
-  const BASE_URL = (process.env.REACT_APP_BASE_URL || "").replace(/['";]/g, "");
-
   const [error, setError] = useState({});
   const [label, setLabel] = useState("Nom du fichier");
   const navigate = useNavigate();
   const isAuth = useIsAuthenticated();
 
-  if (!isAuth) navigate("/admin/login");
+  useEffect(() => {
+    if (!isAuth) navigate("/admin/login");
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

@@ -32,7 +32,7 @@ const Main = () => {
         const message = localStorage.getItem("message");
         if (message) setNotification(message);
       } catch (err) {
-        console.log(error)
+        console.log(error);
         setError(err.message || "Erreur lors de la requête");
       } finally {
         setLoading(false);
@@ -93,18 +93,6 @@ const Main = () => {
         </div>
       </section>
 
-      <section className="hero is-hero-bar">
-        <div className="hero-body">
-          <div className="level">
-            <div className="level-left">
-              <div className="level-item">
-                <h1 className="title">Administrateurs</h1>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <section className="section is-main-section">
         {notification && (
           <div className="notification is-primary">
@@ -135,7 +123,7 @@ const Main = () => {
                       <th>Prénom</th>
                       <th>Nom</th>
                       <th>Email</th>
-                      <th>Date enregistrement</th>
+                      <th>Date d’enregistrement</th>
                       <th></th>
                     </tr>
                   </thead>

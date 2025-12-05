@@ -68,7 +68,7 @@ const SideBar = () => {
               >
                 <span className="mdi mdi-account-group"></span>
               </span>
-              <span className="menu-item-label">Administrateurs</span>
+              <span className="menu-item-label">Utilisateurs</span>
             </NavLink>
           </li>
           <li>
