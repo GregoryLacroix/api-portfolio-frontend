@@ -561,6 +561,12 @@ canvas {
 }
 
 /* CSS formulaire de contact */
+.error{
+  font-weight: normal;
+  color: rgb(231, 83, 83);
+  font-size: 0.85rem;
+}
+
 .form__contact {
   width: 50%;
 }
@@ -575,7 +581,7 @@ canvas {
 .form__input {
   width: 100%;
   padding: 12px 16px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   font-size: 15px;
   border: 2px solid #525257;
   border-radius: 10px;
