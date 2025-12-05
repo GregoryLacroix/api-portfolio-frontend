@@ -8,6 +8,7 @@ import "@splidejs/react-splide/css/sea-green";
 import "@splidejs/react-splide/css/core";
 import stylesFrontEnd from "../../css/frontend/style.module.css";
 import LoaderPortfolio from "./LoaderPortfolio";
+import ContactForm from "./ContactForm";
 
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -164,11 +165,13 @@ export default function () {
 
       <section className={stylesFrontEnd.main__contact}>
         <p className={stylesFrontEnd.contact__infos}>
-          Pour me contacter, cliquez sur un des liens
+          Pour me contacter, merci de remplir le formulaire
           <i className="em em-point_down"></i>
         </p>
 
-        <h2 className={stylesFrontEnd.main__title__contact}>
+        <ContactForm />
+
+        {/* <h2 className={stylesFrontEnd.main__title__contact}>
           Disponible pour des&nbsp;
           <a
             href="mailto:gregorylacroix78@gmail.com?subject=Proposition%20de%20mission"
@@ -187,7 +190,7 @@ export default function () {
           >
             freelance
           </a>
-        </h2>
+        </h2> */}
       </section>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/frontend/Home";
+import Rgpd from "./pages/frontend/Rgpd";
 import AdminHome from "./pages/backend/Home";
 import AdminDashboard from "./pages/backend/Dashboard";
 import AdminSkills from "./pages/backend/Skills";
@@ -28,6 +29,7 @@ export default function App() {
       <BrowserRouter>
         <Routes>
           <Route index element={<Home />} />
+          <Route path="politique-confidentialite" element={<Rgpd />} />
           <Route path="admin/login" element={<Login />} />
           <Route path="*" element={<PageNotFound />} />
 
