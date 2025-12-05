@@ -51,20 +51,26 @@ export default function Header() {
     const element = document.getElementById("competences");
     if (!element) return;
 
-    const headerHeight =
-      window.innerWidth <= 468 ? 82 : 59; // hauteur du header responsive
+    const headerHeight = window.innerWidth <= 468 ? 82 : 59; // hauteur du header responsive
 
-    const y = element.getBoundingClientRect().top + window.scrollY - headerHeight;
+    const y =
+      element.getBoundingClientRect().top + window.scrollY - headerHeight;
 
     window.scrollTo({ top: y, behavior: "smooth" });
   };
 
   const handleScrollBottom = (e) => {
     e.preventDefault();
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: "smooth",
-    });
+
+    const element = document.getElementById("contact");
+    if (!element) return;
+
+    const headerHeight = window.innerWidth <= 468 ? 82 : 58; // hauteur du header responsive
+
+    const y =
+      element.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+    window.scrollTo({ top: y, behavior: "smooth" });
   };
 
   const handleScrollTop = (e) => {
@@ -73,21 +79,19 @@ export default function Header() {
   };
 
   // ⭐️⭐️⭐️ CORRECTION ICI : scroll avec offset pour éviter que le titre soit caché
-const scrollToPortfolio = (e) => {
-  e.preventDefault();
+  const scrollToPortfolio = (e) => {
+    e.preventDefault();
 
-  const element = document.getElementById("portfolio");
-  if (!element) return;
+    const element = document.getElementById("portfolio");
+    if (!element) return;
 
-  const headerHeight =
-    window.innerWidth <= 468 ? 82 : 58; // hauteur du header responsive
+    const headerHeight = window.innerWidth <= 468 ? 82 : 58; // hauteur du header responsive
 
-  const y = element.getBoundingClientRect().top + window.scrollY - headerHeight;
+    const y =
+      element.getBoundingClientRect().top + window.scrollY - headerHeight;
 
-  window.scrollTo({ top: y, behavior: "smooth" });
-};
-
-
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -109,25 +113,41 @@ const scrollToPortfolio = (e) => {
             >
               <div className={stylesFrontEnd.nav__dropdown}>
                 <li className={stylesFrontEnd.nav__item}>
-                  <a href="#" className={stylesFrontEnd.nav__link} onClick={handleScrollTop}>
+                  <a
+                    href="#"
+                    className={stylesFrontEnd.nav__link}
+                    onClick={handleScrollTop}
+                  >
                     <FontAwesomeIcon icon={faHouseChimney} />
                   </a>
                 </li>
 
                 <li className={stylesFrontEnd.nav__item}>
-                  <a href="#" className={stylesFrontEnd.nav__link} onClick={scrollToCompetences}>
+                  <a
+                    href="#"
+                    className={stylesFrontEnd.nav__link}
+                    onClick={scrollToCompetences}
+                  >
                     À propos
                   </a>
                 </li>
 
                 <li className={stylesFrontEnd.nav__item}>
-                  <a href="#" className={stylesFrontEnd.nav__link} onClick={scrollToPortfolio}>
+                  <a
+                    href="#"
+                    className={stylesFrontEnd.nav__link}
+                    onClick={scrollToPortfolio}
+                  >
                     Projets
                   </a>
                 </li>
 
                 <li className={stylesFrontEnd.nav__item}>
-                  <a href="#" className={stylesFrontEnd.nav__link} onClick={handleScrollBottom}>
+                  <a
+                    href="#"
+                    className={stylesFrontEnd.nav__link}
+                    onClick={handleScrollBottom}
+                  >
                     Contact
                   </a>
                 </li>

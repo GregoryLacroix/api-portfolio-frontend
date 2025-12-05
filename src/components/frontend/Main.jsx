@@ -163,7 +163,7 @@ export default function () {
         )}
       </section>
 
-      <section className={stylesFrontEnd.main__contact}>
+      <section className={stylesFrontEnd.main__contact} id="contact">
         <p className={stylesFrontEnd.contact__infos}>
           Pour me contacter, merci de remplir le formulaire&nbsp;
           <i className="em em-point_down"></i>
