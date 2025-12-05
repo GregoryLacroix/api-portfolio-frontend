@@ -135,7 +135,7 @@ const scrollToPortfolio = (e) => {
                 {isAuth && (
                   <li className={stylesFrontEnd.nav__item}>
                     <a
-                      href="/admin/portfolios"
+                      href="/admin/dashboard"
                       className={stylesFrontEnd.nav__link}
                     >
                       BackOffice
