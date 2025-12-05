@@ -444,6 +444,7 @@ canvas {
   -z-animation: rainbow 30s ease infinite;
   animation: rainbow 30s ease infinite;
   transition: all 0.5s;
+  color:#fff;
 }
 
 .footer_reseaux {
@@ -455,7 +456,7 @@ canvas {
 
 .footer__link {
   text-decoration: none;
-  color: #000;
+  color: #fff;
 }
 
 .footer__link__cv {
@@ -616,14 +617,14 @@ canvas {
   -z-animation: rainbow-arrow 30s ease infinite;
   animation: rainbow-arrow 30s ease infinite;
   transition: all 0.5s;
-  color: #000;
+  color: #fff;
   font-size: 16px;
   cursor: pointer;
   transition: 0.25s ease;
 }
 
 .form__submit:hover {
-  color: #fff;
+  color: #000;
 }
 
 .form__honeypot {
