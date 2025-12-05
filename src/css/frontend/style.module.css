@@ -562,6 +562,11 @@ canvas {
 }
 
 /* CSS formulaire de contact */
+.status {
+  font-weight: 600;
+  color: #10b981; /* vert */
+}
+
 .error{
   font-weight: normal;
   color: rgb(231, 83, 83);

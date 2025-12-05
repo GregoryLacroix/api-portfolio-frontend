@@ -44,7 +44,11 @@ export default function ContactForm() {
   };
 
   if (state.succeeded) {
-    return <p>Votre message a bien été envoyé!</p>;
+    return (
+      <p className={stylesFrontEnd.status}>
+        Votre message a bien été envoyé!
+      </p>
+    );
   }
 
   return (
